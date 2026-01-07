@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Student Registration</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #f2f2f2;
+      text-align: center;
+    }
+
+    form {
+      background-color: white;
+      width: 300px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px gray;
+    }
+
+    input,
+    select {
+      width: 90%;
+      padding: 5px;
+      margin-top: 5px;
+    }
+
+    #msg {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Student Registration Form</h2>
+
+  <form onsubmit="return validate()">
+
+    Name <br>
+    <input type="text" id="name"><br><br>
+
+    Email <br>
+    <input type="text" id="email"><br><br>
+
+    Password <br>
+    <input type="password" id="pass"><br><br>
+
+    Course <br>
+    <select id="course">
+      <option value="">Select</option>
+      <option>BTECH</option>
+      <option>BCA</option>
+      <option>BBA</option>
+    </select><br><br>
+
+    <input type="checkbox" id="agree"> I agree <br><br>
+
+    <input type="submit" value="Submit">
+
+  </form>
+
+  <p id="msg"></p>
+
+  <script>
+    function validate() {
+
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let pass = document.getElementById("pass").value;
+      let course = document.getElementById("course").value;
+      let agree = document.getElementById("agree").checked;
+
+      let msg = document.getElementById("msg");
+
+      if (name == "") {
+        msg.innerHTML = "Enter Name";
+        return false;
+      }
+
+      if (email == "" || !email.includes("@")) {
+        msg.innerHTML = "Enter valid Email";
+        return false;
+      }
+
+      if (pass.length < 6) {
+        msg.innerHTML = "Password must be 6 characters";
+        return false;
+      }
+
+      if (course == "") {
+        msg.innerHTML = "Select Course";
+        return false;
+      }
+
+      if (!agree) {
+        msg.innerHTML = "Please agree";
+        return false;
+      }
+
+      alert("Form Submitted Successfully");
+      return true;
+    }
+  </script>
+
+</body>
+
+</html>

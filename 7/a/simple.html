@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DOM Manipulation</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        .yellow {
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>DOM Manipulation using JavaScript</h2>
+
+    <input type="text" id="txt" placeholder="Enter item">
+    <br><br>
+
+    <button onclick="addItem()">Add</button>
+    <button onclick="removeItem()">Remove Last</button>
+    <button onclick="highlight()">Highlight</button>
+
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+
+    <script>
+
+        function addItem() {
+            let text = document.getElementById("txt").value;
+            if (text == "") return;
+
+            let li = document.createElement("li");
+            li.innerHTML = text;
+            document.getElementById("list").appendChild(li);
+        }
+
+        function removeItem() {
+            let list = document.getElementById("list");
+            if (list.lastChild)
+                list.removeChild(list.lastChild);
+        }
+
+        function highlight() {
+            let items = document.getElementsByTagName("li");
+            for (let i = 0; i < items.length; i++)
+                items[i].classList.toggle("yellow");
+        }
+
+    </script>
+
+</body>
+
+</html>

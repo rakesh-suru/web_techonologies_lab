@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Event Handling Demo</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+        }
+
+        input,
+        textarea,
+        button {
+            margin: 5px;
+            padding: 5px;
+        }
+
+        #msg {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>JavaScript Event Handling</h2>
+
+    <!-- Click Event -->
+    <button id="btn">Change Background</button>
+
+    <br><br>
+
+    <!-- Input Event -->
+    <input type="text" id="name" placeholder="Enter name">
+    <p id="out">Your name here</p>
+
+    <!-- Submit Event -->
+    <form id="form">
+        <textarea id="feed" placeholder="Feedback"></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="msg"></p>
+
+    <script>
+
+        let colors = ["lightyellow", "lightblue", "lightgreen", "lightpink"];
+        let i = 0;
+
+        document.getElementById("btn").onclick = function () {
+            document.body.style.backgroundColor = colors[i];
+            i = (i + 1) % colors.length;   // move to next color
+        };
+
+        document.getElementById("name").oninput = function () {
+            document.getElementById("out").innerHTML = "Hello " + this.value;
+        };
+
+        document.getElementById("form").onsubmit = function (e) {
+            e.preventDefault();
+            let f = document.getElementById("feed").value;
+
+            if (f == "")
+                msg.innerHTML = "Enter feedback";
+            else
+                msg.innerHTML = "Thank you!";
+        };
+
+    </script>
+
+</body>
+
+</html>
